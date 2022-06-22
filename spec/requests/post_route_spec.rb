@@ -1,0 +1,12 @@
+require 'rails_helper'
+
+describe "post a review route", :type => :request do
+
+  before do
+    post '/reviews', params: { :author => 'test_author', :content => 'test_content' }
+  end
+
+  it 'returns the author name' do
+    expect(JSON.parse(response.body)['author']).to eq('test_author')
+  end
+end
