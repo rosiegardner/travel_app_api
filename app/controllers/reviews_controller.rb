@@ -20,6 +20,11 @@ class ReviewsController < ApplicationController
     @review.update(review_params)
   end
 
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+  end
+
   private
   def json_response(object, status = :ok)
     render json: object, status: status
