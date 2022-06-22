@@ -15,6 +15,11 @@ class ReviewsController < ApplicationController
     json_response(@review)
   end
 
+  def update
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+  end
+
   private
   def json_response(object, status = :ok)
     render json: object, status: status
