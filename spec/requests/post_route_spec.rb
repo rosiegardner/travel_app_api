@@ -9,4 +9,8 @@ describe "post a review route", :type => :request do
   it 'returns the author name' do
     expect(JSON.parse(response.body)['author']).to eq('test_author')
   end
+
+  it 'returns the review content' do 
+    expect(JSON.parse(response.body)['content']).to eq('test_content')
+  end
 end
