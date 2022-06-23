@@ -13,4 +13,9 @@ describe 'update a review route', :type => :request do
     puts(response.body)
     expect(JSON.parse(response.body)['author']).to eq('testie_author')
   end
+
+  it 'updates the reviews content' do
+    puts(response.body)
+    expect(JSON.parse(response.body)['content']).to eq('testie_content')
+  end
 end
