@@ -18,4 +18,8 @@ describe 'update a review route', :type => :request do
     puts(response.body)
     expect(JSON.parse(response.body)['content']).to eq('testie_content')
   end
+
+  it 'returns a success status' do
+    expect(response).to have_http_status(:success)
+  end
 end
