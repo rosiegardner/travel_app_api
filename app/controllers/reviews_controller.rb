@@ -17,7 +17,11 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    @review.update(review_params)
+    if @review.update!(review_params)
+      render status: 200, json: {
+        message: "This quote has been updated successfully."
+      }
+    end
   end
 
   def destroy
