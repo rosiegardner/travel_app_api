@@ -28,4 +28,9 @@ describe 'update a review route', :type => :request do
     puts(response.body)
     expect(JSON.parse(response.body)['message']).to eq('This quote has been updated successfully.')
   end
+  
+  it 'returns a success message status' do
+    patch "/reviews/#{@review_id}" , params: { :author => 'testie_author', :content => 'testie_content' }
+    expect(response).to have_http_status(:success)
+  end
 end
