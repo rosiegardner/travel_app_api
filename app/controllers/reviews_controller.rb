@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     if @review.update!(review_params)
       render status: 200, json: {
-        message: "This quote has been updated successfully."
+        message: "This review has been updated successfully."
       }
     end
   end
