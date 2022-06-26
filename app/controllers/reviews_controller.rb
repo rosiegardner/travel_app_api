@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
     if author = params[:author]
       @reviews = Review.search(author)
     elsif params[:page].present?
-      @reviews = Review.all.paginate(:page => params[:page], per_page:10)
+      @reviews = Review.order('author ASC').paginate(:page => params[:page], per_page:10)
     else
       @reviews = Review.all
     end
