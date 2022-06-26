@@ -1,9 +1,13 @@
 class ReviewsController < ApplicationController
 
   def index
-    author = params[:author]
-    @reviews = Review.search(author)
-    # @reviews = Review.all
+    if author = params[:author]
+      @reviews = Review.search(author)
+    elsif params[:page].present?
+      @reviews = Review.all.paginate(:page => params[:page], per_page:10)
+    else
+      @reviews = Review.all
+    end
     json_response(@reviews)
   end
 
