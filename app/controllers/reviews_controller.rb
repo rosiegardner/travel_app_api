@@ -1,7 +1,9 @@
 class ReviewsController < ApplicationController
 
   def index
-    @reviews = Review.all
+    author = params[:author]
+    @reviews = Review.search(author)
+    # @reviews = Review.all
     json_response(@reviews)
   end
 
