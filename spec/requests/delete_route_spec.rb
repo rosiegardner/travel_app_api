@@ -11,5 +11,9 @@ describe 'destroy a review route', :type => :request do
   it 'returns a success status' do
     expect(response).to have_http_status(:success)
   end
+
+  it 'returns a success message' do
+    expect(JSON.parse(response.body)['message']).to eq('This review has been destroyed successfully.')
+  end
 end
   
