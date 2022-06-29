@@ -17,6 +17,11 @@ describe "get all reviews route", :type => :request do
     get '/reviews/1'
     expect(JSON.parse(response.body).size).to eq(1)
   end
+
+  it 'returns 10 reviews at a time' do
+    get '/reviews?page=1'
+    expect(JSON.parse(response.body).size).to eq(10)
+  end
 end
 
 describe "get author by name", :type => :request do
